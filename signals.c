@@ -1,6 +1,7 @@
 #include "signals.h"
 #include <stdio.h>
 #include <signal.h>
+#include "my_system_call.h"
 
 void ctrlCHandler(int sig)
 {
@@ -14,6 +15,6 @@ void ctrlZHandler(int sig)
 
 void setupSignalHandlers()
 {
-    signal(SIGINT, ctrlCHandler);   // Ctrl+C
-    signal(SIGTSTP, ctrlZHandler);
+    my_system_call(SYS_SIGNAL, SIGINT, ctrlCHandler); //CTRL+C
+    my_system_call(SYS_SIGNAL, SIGTSTP, ctrlZHandler); //CTRL+Z
 }

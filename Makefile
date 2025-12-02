@@ -7,7 +7,8 @@ TARGET = smash
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
+# Include the course-provided object file containing the 'my_system_call' implementation
+	$(CC) $(CFLAGS) $(OBJS) my_system_call.o -o $(TARGET) 
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
